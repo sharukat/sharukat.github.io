@@ -3514,8 +3514,8 @@ fieldset:disabled a.btn {
 
 .resume-wrap {
     width: 100%;
-    margin-bottom: 30px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     padding-bottom: 10px;
 }
 
@@ -3552,7 +3552,7 @@ fieldset:disabled a.btn {
 
 .resume-wrap .position {
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 500;
     color: #000000;
 }
 
