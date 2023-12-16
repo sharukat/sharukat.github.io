@@ -16,6 +16,215 @@
     scrollProperty: 'scroll'
   });
 
+  	
+//   	/**
+//    * Easy selector helper function
+//    */
+// 	const select = (el, all = false) => {
+// 		el = el.trim()
+// 		if (all) {
+// 		return [...document.querySelectorAll(el)]
+// 		} else {
+// 		return document.querySelector(el)
+// 		}
+// 	}
+
+// 	/**
+//    * Easy event listener function
+//    */
+// 	const on = (type, el, listener, all = false) => {
+// 		let selectEl = select(el, all)
+// 		if (selectEl) {
+// 		  if (all) {
+// 			selectEl.forEach(e => e.addEventListener(type, listener))
+// 		  } else {
+// 			selectEl.addEventListener(type, listener)
+// 		  }
+// 		}
+// 	  }
+	
+// 	  /**
+// 	   * Easy on scroll event listener 
+// 	   */
+// 	  const onscroll = (el, listener) => {
+// 		el.addEventListener('scroll', listener)
+// 	  }
+	
+// 	  /**
+// 	   * Navbar links active state on scroll
+// 	   */
+// 	  let navbarlinks = select('#navbar .scrollto', true)
+// 	  const navbarlinksActive = () => {
+// 		let position = window.scrollY + 200
+// 		navbarlinks.forEach(navbarlink => {
+// 		  if (!navbarlink.hash) return
+// 		  let section = select(navbarlink.hash)
+// 		  if (!section) return
+// 		  if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+// 			navbarlink.classList.add('active')
+// 		  } else {
+// 			navbarlink.classList.remove('active')
+// 		  }
+// 		})
+// 	  }
+// 	  window.addEventListener('load', navbarlinksActive)
+// 	  onscroll(document, navbarlinksActive)
+	
+// 	  /**
+// 	   * Scrolls to an element with header offset
+// 	   */
+// 	  const scrollto = (el) => {
+// 		let elementPos = select(el).offsetTop
+// 		window.scrollTo({
+// 		  top: elementPos,
+// 		  behavior: 'smooth'
+// 		})
+// 	  }
+	
+// 	  /**
+// 	   * Back to top button
+// 	   */
+// 	  let backtotop = select('.back-to-top')
+// 	  if (backtotop) {
+// 		const toggleBacktotop = () => {
+// 		  if (window.scrollY > 100) {
+// 			backtotop.classList.add('active')
+// 		  } else {
+// 			backtotop.classList.remove('active')
+// 		  }
+// 		}
+// 		window.addEventListener('load', toggleBacktotop)
+// 		onscroll(document, toggleBacktotop)
+// 	  }
+
+
+// 	  /**
+// 	 * Mobile nav toggle
+// 	 */
+// 	on('click', '.mobile-nav-toggle', function(e) {
+// 		select('body').classList.toggle('mobile-nav-active')
+// 		this.classList.toggle('bi-list')
+// 		this.classList.toggle('bi-x')
+// 	})
+
+// 	/**
+// 	 * Scrool with ofset on links with a class name .scrollto
+// 	 */
+// 	on('click', '.scrollto', function(e) {
+// 		if (select(this.hash)) {
+// 		e.preventDefault()
+
+// 		let body = select('body')
+// 		if (body.classList.contains('mobile-nav-active')) {
+// 			body.classList.remove('mobile-nav-active')
+// 			let navbarToggle = select('.mobile-nav-toggle')
+// 			navbarToggle.classList.toggle('bi-list')
+// 			navbarToggle.classList.toggle('bi-x')
+// 		}
+// 		scrollto(this.hash)
+// 		}
+// 	}, true)
+
+// 	/**
+// 	 * Scroll with ofset on page load with hash links in the url
+// 	 */
+// 	window.addEventListener('load', () => {
+// 		if (window.location.hash) {
+// 		if (select(window.location.hash)) {
+// 			scrollto(window.location.hash)
+// 		}
+// 		}
+// 	});
+
+// 	/**
+//    * Preloader
+//    */
+// 	let preloader = select('#preloader');
+// 	if (preloader) {
+// 	  window.addEventListener('load', () => {
+// 		preloader.remove()
+// 	  });
+// 	}
+
+// 	/**
+//    * Animation on scroll
+//    */
+// 	window.addEventListener('load', () => {
+// 		AOS.init({
+// 		  duration: 1000,
+// 		  easing: 'ease-in-out',
+// 		  once: true,
+// 		  mirror: false
+// 		})
+// 	  });
+
+
+// 	/**
+//    * Porfolio isotope and filter
+//    */
+// 	window.addEventListener('load', () => {
+// 		let portfolioContainer = select('.portfolio-container');
+// 		if (portfolioContainer) {
+// 		  let portfolioIsotope = new Isotope(portfolioContainer, {
+// 			itemSelector: '.portfolio-item'
+// 		  });
+	
+// 		  let portfolioFilters = select('#portfolio-flters li', true);
+	
+// 		  on('click', '#portfolio-flters li', function(e) {
+// 			e.preventDefault();
+// 			portfolioFilters.forEach(function(el) {
+// 			  el.classList.remove('filter-active');
+// 			});
+// 			this.classList.add('filter-active');
+	
+// 			portfolioIsotope.arrange({
+// 			  filter: this.getAttribute('data-filter')
+// 			});
+// 			portfolioIsotope.on('arrangeComplete', function() {
+// 			  AOS.refresh()
+// 			});
+// 		  }, true);
+// 		}
+	
+// 	  });
+	
+// 	  /**
+// 	   * Initiate portfolio lightbox 
+// 	   */
+// 	  const portfolioLightbox = GLightbox({
+// 		selector: '.portfolio-lightbox'
+// 	  });
+	
+// 	  /**
+// 	   * Initiate portfolio details lightbox 
+// 	   */
+// 	  const portfolioDetailsLightbox = GLightbox({
+// 		selector: '.portfolio-details-lightbox',
+// 		width: '90%',
+// 		height: '90vh'
+// 	  });
+	
+// 	  /**
+// 	   * Portfolio details slider
+// 	   */
+// 	  new Swiper('.portfolio-details-slider', {
+// 		speed: 400,
+// 		loop: true,
+// 		autoplay: {
+// 		  delay: 5000,
+// 		  disableOnInteraction: false
+// 		},
+// 		pagination: {
+// 		  el: '.swiper-pagination',
+// 		  type: 'bullets',
+// 		  clickable: true
+// 		}
+// 	  });
+
+
+
+
 
 	var fullHeight = function() {
 
@@ -26,96 +235,6 @@
 
 	};
 	fullHeight();
-
-	// loader
-	var loader = function() {
-		setTimeout(function() { 
-			if($('#ftco-loader').length > 0) {
-				$('#ftco-loader').removeClass('show');
-			}
-		}, 1);
-	};
-	loader();
-
-	// Scrollax
-   $.Scrollax();
-
-   $(function() {
-    $(".js-nav a, .js-connect").click(function(e) {
-      e.preventDefault();
-      $("body, html").animate(
-        {
-          scrollTop: $($.attr(this, "href")).offset().top
-        },
-        750
-      );
-    });
-  });
-  $(function() {
-    $("a[href*=#]:not([href=#])").click(function() {
-      if (
-        location.pathname.replace(/^\//, "") ==
-          this.pathname.replace(/^\//, "") &&
-        location.hostname == this.hostname
-      ) {
-        var target = $(this.hash);
-        target = target.length
-          ? target
-          : $("[name=" + this.hash.slice(1) + "]");
-        if (target.length) {
-          $("html,body").animate(
-            {
-              scrollTop: target.offset().top
-            },
-            1000
-          );
-          return false;
-        }
-      }
-    });
-  });
-
-
-
-   // Burger Menu
-	var burgerMenu = function() {
-
-		$('body').on('click', '.js-fh5co-nav-toggle', function(event){
-
-			event.preventDefault();
-
-			if ( $('#ftco-nav').is(':visible') ) {
-				$(this).removeClass('active');
-			} else {
-				$(this).addClass('active');	
-			}
-
-			
-			
-		});
-
-	};
-	burgerMenu();
-
-
-	var onePageClick = function() {
-
-
-		$(document).on('click', '#ftco-nav a[href^="#"]', function (event) {
-	    event.preventDefault();
-
-	    var href = $.attr(this, 'href');
-
-	    $('html, body').animate({
-	        scrollTop: $($.attr(this, 'href')).offset().top - 70
-	    }, 500, function() {
-	    	// window.location.hash = href;
-	    });
-		});
-
-	};
-
-	onePageClick();
 	
 
 	var carousel = function() {
@@ -144,69 +263,69 @@
 	};
 	carousel();
 
-	$('nav .dropdown').hover(function(){
-		var $this = $(this);
-		// 	 timer;
-		// clearTimeout(timer);
-		$this.addClass('show');
-		$this.find('> a').attr('aria-expanded', true);
-		// $this.find('.dropdown-menu').addClass('animated-fast fadeInUp show');
-		$this.find('.dropdown-menu').addClass('show');
-	}, function(){
-		var $this = $(this);
-			// timer;
-		// timer = setTimeout(function(){
-			$this.removeClass('show');
-			$this.find('> a').attr('aria-expanded', false);
-			// $this.find('.dropdown-menu').removeClass('animated-fast fadeInUp show');
-			$this.find('.dropdown-menu').removeClass('show');
-		// }, 100);
-	});
+	// $('nav .dropdown').hover(function(){
+	// 	var $this = $(this);
+	// 	// 	 timer;
+	// 	// clearTimeout(timer);
+	// 	$this.addClass('show');
+	// 	$this.find('> a').attr('aria-expanded', true);
+	// 	// $this.find('.dropdown-menu').addClass('animated-fast fadeInUp show');
+	// 	$this.find('.dropdown-menu').addClass('show');
+	// }, function(){
+	// 	var $this = $(this);
+	// 		// timer;
+	// 	// timer = setTimeout(function(){
+	// 		$this.removeClass('show');
+	// 		$this.find('> a').attr('aria-expanded', false);
+	// 		// $this.find('.dropdown-menu').removeClass('animated-fast fadeInUp show');
+	// 		$this.find('.dropdown-menu').removeClass('show');
+	// 	// }, 100);
+	// });
 
 
-	$('#dropdown04').on('show.bs.dropdown', function () {
-	  console.log('show');
-	});
+	// $('#dropdown04').on('show.bs.dropdown', function () {
+	//   console.log('show');
+	// });
 
-	// scroll
-	var scrollWindow = function() {
-		$(window).scroll(function(){
-			var $w = $(this),
-					st = $w.scrollTop(),
-					navbar = $('.ftco_navbar'),
-					sd = $('.js-scroll-wrap');
+	// // scroll
+	// var scrollWindow = function() {
+	// 	$(window).scroll(function(){
+	// 		var $w = $(this),
+	// 				st = $w.scrollTop(),
+	// 				navbar = $('.ftco_navbar'),
+	// 				sd = $('.js-scroll-wrap');
 
-			if (st > 150) {
-				if ( !navbar.hasClass('scrolled') ) {
-					navbar.addClass('scrolled');	
-				}
-			} 
-			if (st < 150) {
-				if ( navbar.hasClass('scrolled') ) {
-					navbar.removeClass('scrolled sleep');
-				}
-			} 
-			if ( st > 350 ) {
-				if ( !navbar.hasClass('awake') ) {
-					navbar.addClass('awake');	
-				}
+	// 		if (st > 150) {
+	// 			if ( !navbar.hasClass('scrolled') ) {
+	// 				navbar.addClass('scrolled');	
+	// 			}
+	// 		} 
+	// 		if (st < 150) {
+	// 			if ( navbar.hasClass('scrolled') ) {
+	// 				navbar.removeClass('scrolled sleep');
+	// 			}
+	// 		} 
+	// 		if ( st > 350 ) {
+	// 			if ( !navbar.hasClass('awake') ) {
+	// 				navbar.addClass('awake');	
+	// 			}
 				
-				if(sd.length > 0) {
-					sd.addClass('sleep');
-				}
-			}
-			if ( st < 350 ) {
-				if ( navbar.hasClass('awake') ) {
-					navbar.removeClass('awake');
-					navbar.addClass('sleep');
-				}
-				if(sd.length > 0) {
-					sd.removeClass('sleep');
-				}
-			}
-		});
-	};
-	scrollWindow();
+	// 			if(sd.length > 0) {
+	// 				sd.addClass('sleep');
+	// 			}
+	// 		}
+	// 		if ( st < 350 ) {
+	// 			if ( navbar.hasClass('awake') ) {
+	// 				navbar.removeClass('awake');
+	// 				navbar.addClass('sleep');
+	// 			}
+	// 			if(sd.length > 0) {
+	// 				sd.removeClass('sleep');
+	// 			}
+	// 		}
+	// 	});
+	// };
+	// scrollWindow();
 
 	
 
@@ -381,64 +500,11 @@ window.onload = function() {
   document.body.appendChild(css);
 };
 
-
+ 
 })(jQuery);
 
 
 
-
-
-
-
-// this makes the height of each page equal to the height of the window
-// $('.page').css('height', $( window ).height());
-
-// scrollspy section
-(function($){
-  //variable that will hold the href attr of the links in the menu
-  var sections = [];
-  //variable that stores the id of the section
-  var id = false;
-  //variable for the selection of the anchors in the navbar
-  var $navbara = $('#navi a');
-  
-  $navbara.click(function(e){
-    //prevent the page from refreshing
-    e.preventDefault();
-    //set the top offset animation and speed
-    $('html, body').animate({
-      scrollTop: $($(this).attr('href')).offset().top - 180
-},500);
-    hash($(this).attr('href'));
-  });
-  
-  
-
-//select all the anchors in the navbar one after another
-$navbara.each(function(){
-// and adds them in the sections variable
-sections.push($($(this).attr('href')));
-    
-});
-
-$(window).scroll(function(e){
-// scrollTop retains the value of the scroll top with the reference at the middle of the page
-var scrollTop = $(this).scrollTop() + ($(window).height()/2);
-//cycle through the values in sections array
-for (var i in sections) {
-	var section = sections[i];
-	//if scrollTop variable is bigger than the top offset of a section in the sections array then 
-	if (scrollTop > section.offset().top){
-	var scrolled_id = section.attr('id');
-	}
-}
-if (scrolled_id !== id) {
-	id = scrolled_id;
-	$($navbara).removeClass('current');
-	$('#navi a[href="#' + id + '"]').addClass('current'); 
-}
-})
-})(jQuery);
 
 hash = function(h){
   if (history.pushState){
@@ -449,32 +515,6 @@ hash = function(h){
 }
 
 
-$(function() {
-
-  $(".progress").each(function() {
-
-    var value = $(this).attr('data-value');
-    var left = $(this).find('.progress-left .progress-bar');
-    var right = $(this).find('.progress-right .progress-bar');
-
-    if (value > 0) {
-      if (value <= 50) {
-        right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
-      } else {
-        right.css('transform', 'rotate(180deg)')
-        left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
-      }
-    }
-
-  })
-
-  function percentageToDegrees(percentage) {
-
-    return percentage / 100 * 360
-
-  }
-
-});
 
 var mySwiper = new Swiper('.swiper', {
 	// Optional parameters
@@ -507,8 +547,9 @@ var mySwiper = new Swiper('.swiper', {
   })
 );
 
-  $(".grid").isotope({
-	itemSelector: ".grid-item",
-	layoutMode: "fitRows",
-	transitionDuration: "0.6s",
-  });
+//   $(".grid").isotope({
+// 	itemSelector: ".grid-item",
+// 	layoutMode: "fitRows",
+// 	transitionDuration: "0.6s",
+//   });
+
