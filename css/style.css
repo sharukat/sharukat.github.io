@@ -103,7 +103,33 @@ a:not([href]):not([tabindex]):focus {
     outline: 0;
 }
 
+.review-text {
+  color: #000000;
+  list-style: none; /* Remove default bullet points */
+  
+}
 
+.table-list {
+  color: #000000;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+  gap: 10px; /* Space between items */
+  list-style: none; /* Remove default bullet points */
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #444;
+  line-height: 1.7;
+}
+.table-list li {
+  position: relative;
+  padding-left: 20px; /* Space for the tick */
+}
+.table-list li::before {
+  content: '✔'; /* Unicode character for tick */
+  position: absolute;
+  left: 0;
+  color: rgb(38, 0, 251); /* Color of the tick */
+}
 
 
 /* ======= Download CV Button Section ======= */
@@ -142,6 +168,7 @@ a:not([href]):not([tabindex]):focus {
 .text-center {
     text-align: center !important;
 }
+ /* Awards section */
 
 
 /* ############################################################################################ */
@@ -218,10 +245,10 @@ a:not([href]):not([tabindex]):focus {
 
 
 .services-1:hover {
-    background: #3e64ff;
+    background: #D3D3D3;
 }
 
-.services-1:hover .icon i {
+/* .services-1:hover .icon i {
     color: #fff;
 }
 
@@ -231,14 +258,14 @@ a:not([href]):not([tabindex]):focus {
     
 }
 
-.services-1:hover p {
+.services-1:hover p {s
     color: #ffffff;
     
 }
 
 .services-1:hover h3:after {
     background: #ffffff;
-}
+} */
 
 .title_project {
     position: relative;
@@ -1235,7 +1262,7 @@ body {
 #hero {
     width: 100%;
     height: 100vh;
-    background: url("../images/sharuka-blur.png") bottom right no-repeat;
+    background: url("../images/bg_cover.jpeg") bottom right no-repeat;
     background-size: cover;
     position: relative;
   }
@@ -1248,7 +1275,7 @@ body {
   
   #hero:before {
     content: "";
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.6);
     position: absolute;
     bottom: 0;
     top: 0;
